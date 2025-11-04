@@ -49,8 +49,6 @@ void main(){ // main 스레드 갖는 함수
 
   // [7] if , for 제어문들은 자바와 동일
 
-
-
 } // main end
 
 // [5-1] class 클래스명{}

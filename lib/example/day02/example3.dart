@@ -1,36 +1,31 @@
-// [*] 상태(state) 있는 위젯
 import 'package:flutter/material.dart';
 
-void main( ){ runApp(MyApp()); }
+// [2] 최초로 실행할 위젯 , main함수 안에서 runApp 함수 이용한 위젯 실행
+// 상단바에서 실행할 환경 선택( web 또는 mobile )
+void main(){ runApp(  MyApp() ); }
 
-class MyApp extends StatefulWidget{ // 1. 상태가 있는 위젯 상속받기
-  // (1) extends StatefulWidget 위젯으로부터 상속받는다.
-  // (2) 상태를 관리할 하위 위젯들 등록한다.
-  // * 하위 위젯들은 extends State< 상위위젯명 >
-  // 등록할 위젯명 createState() => 등록할위젯명();
-  MyAppState createState() => new MyAppState();
-}
-// 2. 상태를 사용하는 위젯 별도 선언
-class MyAppState extends State< MyApp >{
+// [1] 상태가 없는 위젯 = 재 렌더링 없을때 사용
+class MyApp extends StatelessWidget{ // [1-1] StatelessWidget 상속받는다.
+  // [1-3] 이벤트
   int count = 0; // 변수
-  // ++++++++++++++ 상태 변경 / 재렌더링 +++++++++++++++++++++++
-  // setState(  (){ 새로운값; } )
-  void increment(){ setState( () { count++; } ); print( count ); }
+  void increment( ){ count++; print(count); } // 함수
+  // [1-2] build 함수 재구현
   @override
   Widget build(BuildContext context) {
-    // return new MaterialApp( home: new Text("안녕하세요"),);
-    return MaterialApp( home: Scaffold(  // 상단, 하단바를 나눌수있다.
-      appBar : AppBar( title: Text("상단제목") ), //
-      body : Center(  // 가운데 정렬
-        child: Column(   // 여러개를 넣고 싶을때 ,
-          children: [
-            Text("count : ${ count }") ,
-            TextButton(onPressed: increment, child: Text("버튼")  )
-          ],
-        ) ,
-      ) ,
-    )
+    // return  MaterialApp( home:  Text("안녕하세요"),);
+    return MaterialApp(
+        home: Scaffold(  // 상단, 하단바를 나눌수있다
+          appBar: AppBar( title: Text("상단제목") ) ,
+          body: Center(  // 가운데 정렬
+            child: Column(  // 세로로 여러개 입력시
+              children: [
+                Text("세로 정렬 첫번째 위젯1") ,
+                Text("세로 정렬 두번째 위젯2") ,
+                TextButton( onPressed : increment , child: Text("세로 정렬 세번째 위젯3"), ),
+                Text("세로 정렬 네번째 위젯4 COUNT : ${ count } ")
+              ], ), ),
+        )
     );
   }
-
-}
+} // class end
+// 리액트 : <button onClick = { increment } > 세로 정렬 세번째 위젯3 </button>

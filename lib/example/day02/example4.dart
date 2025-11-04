@@ -29,11 +29,11 @@ class IOwidgetState extends State< IOwidget >{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("입출력 실습"),),
+      appBar: AppBar(title: Text("대기명단"),),
       body: Column(
         children: [
-          TextField( controller : nameCont , ),
-          TextField( controller : ageCont , decoration: InputDecoration( labelText : "나이 입력" ) , ),
+          TextField( controller : nameCont , decoration: InputDecoration( labelText : "이름" ) ,),
+          TextField( controller : ageCont , decoration: InputDecoration( labelText : "연락처" ) , ),
           TextButton( onPressed: onSave, child: Text("등록") )
         ],),
     );

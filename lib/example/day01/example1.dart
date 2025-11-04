@@ -40,5 +40,5 @@ void main(){  // public static void main(){}와 비슷한 main스레드 갖는�
 }
 
 // 함수의 반환타입이 없다는 뜻
-// main 함수명 , 자바와 비슷하게 최초 실행은 void main 시작
+// main 함수명 , 자바와 비슷하게 최초 실행은 void main 시작된다.
 
