@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:tj2025app/example/실습/실습4/pages/FindAllPages.dart';
 import 'package:tj2025app/example/실습/실습4/pages/CreatePage.dart';
 import 'package:tj2025app/example/실습/실습4/pages/HomePage.dart';
-import 'package:tj2025app/example/실습/실습4/pages/FindAllPages.dart';
 
 
 
-class MainPage extends StatefulWidget{
+
+class Mainpage extends StatefulWidget{
   MainPageState createState() => MainPageState();
 }
 class MainPageState extends State<MainPage>{
@@ -13,7 +14,7 @@ class MainPageState extends State<MainPage>{
   dynamic pages = [
     HomePage(),
     CreatePage() ,
-    findAllPages() ,
+    FindAllPages() ,
   ];
   @override
   Widget build(BuildContext context) {

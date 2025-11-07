@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class FindAllPages extends StatelessElement{
+class FindAllPages extends StatelessWidget{
   @override
-  Widget build() {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("전체조회"),),
       body: Text("조회페이지")
