@@ -17,7 +17,7 @@ class UpdateState extends State<Update>{
  dynamic todo = {};
   void findById(int id) async{
     try{
-      final response = await dio.get("http://192.168.40.133:8080/api/todo/detail?id=${id}");
+      final response = await dio.get("http://192.168.40.61:8080/api/todo/detail?id=${id}");
       final data = await response.data;
       setState(() {
         todo= data;
@@ -40,7 +40,7 @@ class UpdateState extends State<Update>{
         "content" : contentCont.text,
         "done" : todo['done']
       };
-      final response = await dio.put("http://192.168.40.133:8080/api/todo" , data : obj );
+      final response = await dio.put("http://192.168.40.61:8080/api/todo" , data : obj );
       final data = await response.data; print(data);
       if( data != null ){ Navigator.pop(context , true ); }
       // 만약에 수정 성공시 뒤로가기, 즉] 현재 위젯을 제거하면서 두번째 매개변수로 true
@@ -71,7 +71,7 @@ class UpdateState extends State<Update>{
           ),
           SizedBox( height: 20,) ,
 
-          OutlinedButton(onPressed: (){}, child: Text("수정하기")),
+          OutlinedButton(onPressed: update, child: Text("수정하기 ")),
 
         ],
       ),

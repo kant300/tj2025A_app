@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-final dio = Dio();
+final dio = Dio();  // 전역으로 설정해서 모두가 사용
 
-class Home extends StatefulWidget{
-  HomeState createState() => HomeState();
+class Home extends StatefulWidget{   // 상태있는 위젯
+  HomeState createState() => HomeState();  // 홈이라는 상태있는 위젯 생성
 }
 
 class HomeState extends State<Home>{
@@ -14,7 +14,7 @@ class HomeState extends State<Home>{
   List< dynamic > todoList = []; // 3. 가져온 todo목록
   void findAll() async{ // 2. Spring 서버로 부터 todo (전체)목록 가져오기
     try{
-      final response = await dio.get( "http://192.168.40.133:8080/api/todo" );
+      final response = await dio.get( "http://192.168.40.61:8080/api/todo" );
       final data = await response.data;
       setState(() { todoList = data;  });
       print(data);
@@ -23,7 +23,7 @@ class HomeState extends State<Home>{
 
   void delete( int id ) async{ // 4. Spring 서버로 부터 개별 삭제 한다.
     try{
-      final response = await dio.delete("http://192.168.40.185:8080/api/todo?id=${id}");
+      final response = await dio.delete("http://192.168.40.61:8080/api/todo?id=${id}");
       final data = await response.data; print(data);
       if( data == true ){ findAll(); }
     }catch(e){print(e);}
@@ -47,8 +47,8 @@ class HomeState extends State<Home>{
                     mainAxisSize: MainAxisSize.min, // Row 배치에서 오른쪽 버튼(윗젯)들의 넓이를 자동으로 최소크기 할당
                     children: [
                       IconButton(onPressed: (){ delete( todo['id'] ); } , icon: Icon( Icons.delete ) ),
-                      IconButton(onPressed: (){
-                        final result = Navigator.pushNamed( context, "/update" , arguments: todo['id'] );
+                      IconButton(onPressed: ()async{
+                        final result = await Navigator.pushNamed( context, "/update" , arguments: todo['id'] );
                         print( result );
                         // 만약에 push 한 위젯이 pop했을때 반환값 받아서 특정 로직 구현
                         if( result == true ){ findAll(); }

@@ -23,7 +23,7 @@ class DetailState extends State<Detail>{
   dynamic todo = {};
   void findById( int id ) async {
     try{
-      final response = await dio.get("http://192.168.40.133:8080/api/todo/detail?id=${id}");
+      final response = await dio.get("http://192.168.40.61:8080/api/todo/detail?id=${id}");
       final data = await response.data; print(data);
       setState(() { todo = data; });
     }catch(e){ print(e);}
